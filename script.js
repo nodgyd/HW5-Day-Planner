@@ -1,5 +1,9 @@
-var today = dayjs();
-$("currentDay").text(today.format('MMM DD, YYYY h:mm A'))
+function time(){
+    var today = dayjs();
+    $("#currentDay").text(today.format('MMM DD, YYYY h:mm:ss A'))
+    
+}
+setInterval(time, 1000)
 
 var currentHour = dayjs().hour();
 
@@ -32,10 +36,10 @@ function render() {
         </div>
         `)
     }
-    
-    
+        
 }
 
 render()
 
 //when saving todo update local storage
+
