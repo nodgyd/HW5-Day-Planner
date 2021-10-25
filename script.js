@@ -6,15 +6,15 @@ function time(){
 setInterval(time, 1000)
 
 var currentHour = dayjs().hour();
-var textContent = $("#description")
+var textContent = $("#text");
 // get this from local storage
-var todo = {
-    textContent: textContent[i],
-}
-
+var todo = "";
 function render() {
-
+    
     for (var i = 9; i < 18; i++) {
+        var todo = {
+        textContent: textContent[i],
+        }
         $(".container-fluid").append(`
         <div class="time-block row">
         <div class="hour col-1 text-start pt-3">${i < 12 ? `${i}AM` : i > 12 ? `${i-12}PM` : "12PM"}</div>
@@ -23,7 +23,7 @@ function render() {
         id="text" 
         class="description col-10 ${i < currentHour ? 'past' : i === currentHour ? 'present' : 'future'}">${todo[i] || ""}
         </textarea>
-        <button id="save" class="saveBtn col-1">Save</button>
+        <button class="saveBtn col-1", data-hour=i>Save</button>
         </div>
         `)
     }
@@ -34,9 +34,10 @@ render()
 
 //when saving todo update local storage
 
-$("#save").on("click", function(){
-    localStorage.setItem("todo", JSON.stringify(textContent))
+$(".saveBtn").on("click", function storage(){
+    localStorage.setItem("data-hour", JSON.stringify(todo))
+    console.log(storage())
 })
 
+$("#description").val(localStorage.getItem(todo))
 
-$("#description").val(localStorage.getItem(textContent))
