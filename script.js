@@ -5,7 +5,7 @@ function time(){
 }
 setInterval(time, 1000)
 
-var currentHour = dayjs().hour() - 5;
+var currentHour = dayjs().hour();
 // var textContent = $("#text");
 // // get this from local storage
 var todos = {};
